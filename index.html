@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undercover Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 20px 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        .player-list {
+            margin-top: 20px;
+        }
+        .player-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .player-list li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Undercover Game</h1>
+        <p>Find the Undercover! Learn Hindi words while playing.</p>
+    </header>
+
+    <div class="container">
+        <div class="player-registration">
+            <h3>Register Players</h3>
+            <input type="text" id="player-name" placeholder="Enter player name">
+            <button onclick="registerPlayer()">Add Player</button>
+        </div>
+
+        <div class="player-list">
+            <h3>Players</h3>
+            <ul id="player-list"></ul>
+        </div>
+
+        <button onclick="assignRoles()">Start Game</button>
+    </div>
+
+    <script>
+        const words = [
+            { hindi: "प्यार", english: "Love" },
+            { hindi: "खुशी", english: "Happiness" },
+            { hindi: "दोस्ती", english: "Friendship" },
+            { hindi: "शक्ति", english: "Strength" },
+            { hindi: "सपना", english: "Dream" },
+            { hindi: "सूरज", english: "Sun" },
+            { hindi: "चाँद", english: "Moon" },
+            { hindi: "तारों", english: "Stars" },
+            { hindi: "पानी", english: "Water" },
+            { hindi: "आकाश", english: "Sky" },
+        ];
+
+        let players = [];
+        let playerWords = {}; // To store assigned words for players
+        let misterWhiteIndex = -1;
+        let availableWords = [...words]; // Clone the words array to ensure unique assignment
+
+        function registerPlayer() {
+            const playerName = document.getElementById("player-name").value;
+            if (playerName && !players.includes(playerName)) {
+                players.push(playerName);
+                document.getElementById("player-name").value = "";
+                updatePlayerList();
+            }
+        }
+
+        function updatePlayerList() {
+            const playerListElement = document.getElementById("player-list");
+            playerListElement.innerHTML = "";
+            players.forEach(player => {
+                const li = document.createElement("li");
+                li.textContent = player; // Show only player name initially
+
+                const button = document.createElement("button");
+                button.textContent = "Show Word";
+                button.onclick = () => showWord(player, button);
+                li.appendChild(button);
+
+                playerListElement.appendChild(li);
+            });
+        }
+
+        function assignRoles() {
+            if (players.length < 2) {
+                alert("You need at least 2 players to start the game.");
+                return;
+            }
+
+            // Randomly select Mister White
+            misterWhiteIndex = Math.floor(Math.random() * players.length);
+
+            // Assign unique words to the rest of the players
+            players.forEach((player, index) => {
+                if (index !== misterWhiteIndex) {
+                    const randomIndex = Math.floor(Math.random() * availableWords.length);
+                    playerWords[player] = availableWords.splice(randomIndex, 1)[0]; // Assign and remove the word
+                }
+            });
+
+            alert("Roles have been assigned. Players can now view their words one by one.");
+        }
+
+        function showWord(player, button) {
+            if (players.indexOf(player) === misterWhiteIndex) {
+                alert(`${player}, you are Mister White and do not have a word.`);
+            } else {
+                const word = playerWords[player];
+                alert(`${player}, your word is: ${word.hindi} (${word.english})`);
+            }
+
+            // Disable the button after the word is shown
+            button.disabled = true;
+            button.textContent = "Word Shown";
+        }
+    </script>
+</body>
+</html>
