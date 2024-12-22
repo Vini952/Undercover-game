@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undercover Game</title>
+    <title>KHUFIYA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,8 +50,8 @@
 </head>
 <body>
     <header>
-        <h1>Undercover Game</h1>
-        <p>Find the Undercover! Learn Hindi words while playing.</p>
+        <h1>KHUFIYA</h1>
+        <p>Find the Khufiya amoung us.</p>
     </header>
 
     <div class="container">
@@ -66,27 +66,99 @@
             <ul id="player-list"></ul>
         </div>
 
-        <button onclick="assignRoles()">Start Game</button>
+        <button onclick="startGame()">Start Game</button>
     </div>
 
     <script>
         const words = [
-            { hindi: "प्यार", english: "Love" },
-            { hindi: "खुशी", english: "Happiness" },
-            { hindi: "दोस्ती", english: "Friendship" },
-            { hindi: "शक्ति", english: "Strength" },
-            { hindi: "सपना", english: "Dream" },
-            { hindi: "सूरज", english: "Sun" },
-            { hindi: "चाँद", english: "Moon" },
-            { hindi: "तारों", english: "Stars" },
-            { hindi: "पानी", english: "Water" },
-            { hindi: "आकाश", english: "Sky" },
+           { hindi: "Dost", french: "Ami" },
+            { hindi: "Sapna", french: "Rêve" },
+            { hindi: "Suraj", french: "Soleil" },
+            { hindi: "Chand", french: "Lune" },
+            { hindi: "Paani", french: "Eau" },
+            { hindi: "Phool", french: "Fleur" },
+            { hindi: "Patang", french: "Cerf-volant" },
+            { hindi: "Kursi", french: "Chaise" },
+            { hindi: "Kitab", french: "Livre" },
+            { hindi: "Darwaza", french: "Porte" },
+            { hindi: "Makaan", french: "Maison" },
+            { hindi: "Bistar", french: "Lit" },
+            { hindi: "Kapda", french: "Vêtement" },
+            { hindi: "Chashma", french: "Lunettes" },
+            { hindi: "Ghadi", french: "Montre" },
+            { hindi: "Cycle", french: "Vélo" },
+            { hindi: "Dhoop", french: "Soleil (Rayons)" },
+            { hindi: "Bijli", french: "Électricité" },,
+            { hindi: "Diya", french: "Lampe" },
+            { hindi: "Maachis", french: "Allumettes" },
+            { hindi: "Pankha", french: "Ventilateur" },
+            { hindi: "Ghar", french: "Maison" },
+            { hindi: "Phal", french: "Fruit" },
+            { hindi: "Sabzi", french: "Légume" },
+            { hindi: "Chawal", french: "Riz" },
+            { hindi: "Roti", french: "Pain indien" },
+            { hindi: "Mithai", french: "Douceur" },
+            { hindi: "Namak", french: "Sel" },
+            { hindi: "Cheeni", french: "Sucre" },
+            { hindi: "Adrak", french: "Gingembre" },
+            { hindi: "Mirchi", french: "Piment" },
+            { hindi: "Doodh", french: "Lait" },
+            { hindi: "Chai", french: "Thé" },
+            { hindi: "Pustak", french: "Livre" },
+            { hindi: "Aaina", french: "Miroir" },
+            { hindi: "Talwar", french: "Épée" },
+            { hindi: "Teer", french: "Flèche" },
+            { hindi: "Gola", french: "Boule" },
+            { hindi: "Khel", french: "Jeu" },
+            { hindi: "Kalam", french: "Stylo" },
+            { hindi: "Patr", french: "Lettre" },
+            { hindi: "Maal", french: "Marchandise" },
+            { hindi: "Samaan", french: "Objets" },
+            { hindi: "Zameen", french: "Terre" },
+            { hindi: "Mitti", french: "Sol" },
+            { hindi: "Pathar", french: "Pierre" },
+            { hindi: "Pahad", french: "Montagne" },
+            { hindi: "Jangal", french: "Forêt" },
+            { hindi: "Dariya", french: "Rivière" },
+            { hindi: "Samundar", french: "Mer" },
+            { hindi: "Shahar", french: "Ville" },
+            { hindi: "Gaon", french: "Village" },
+            { hindi: "Sadak", french: "Route" },
+            { hindi: "School", french: "École" },
+            { hindi: "Gaana", french: "Chanson" },
+            { hindi: "Nach", french: "Danse" },
+            { hindi: "Rang", french: "Couleur" },
+            { hindi: "Safed", french: "Blanc" },
+            { hindi: "Kaala", french: "Noir" },
+            { hindi: "Peela", french: "Jaune" },
+            { hindi: "Neela", french: "Bleu" },
+            { hindi: "Hara", french: "Vert" },
+            { hindi: "Lal", french: "Rouge" },
+            { hindi: "Gulaabi", french: "Rose" },
+            { hindi: "Bhura", french: "Marron" },
+            { hindi: "Sona", french: "Or" },
+            { hindi: "Chaandi", french: "Argent" },
+            { hindi: "Loha", french: "Fer" },
+            { hindi: "Lakdi", french: "Bois" },
+            { hindi: "Kachcha", french: "Cru" },
+            { hindi: "Pakka", french: "Cuit" },
+            { hindi: "Thanda", french: "Froid" },
+            { hindi: "Garam", french: "Chaud" },
+            { hindi: "Bhojan", french: "Nourriture" },
+            { hindi: "Pyala", french: "Bol" },
+            { hindi: "Thali", french: "Plateau" },
+            { hindi: "Chamach", french: "Cuillère" },
+            { hindi: "Botal", french: "Bouteille" },
+            { hindi: "Juta", french: "Chaussure" },
+            { hindi: "Topi", french: "Chapeau" },
+            { hindi: "Kapda", french: "Tissu" },
+            { hindi: "Ghanti", french: "Cloche" },
+            { hindi: "Sandesh", french: "Message" }
         ];
 
         let players = [];
-        let playerWords = {}; // To store assigned words for players
-        let misterWhiteIndex = -1;
-        let availableWords = [...words]; // Clone the words array to ensure unique assignment
+        let misterWhite = null; // The player who is Mister White
+        let commonWord = null; // The word shared by all other players
 
         function registerPlayer() {
             const playerName = document.getElementById("player-name").value;
@@ -102,48 +174,68 @@
             playerListElement.innerHTML = "";
             players.forEach(player => {
                 const li = document.createElement("li");
-                li.textContent = player; // Show only player name initially
-
-                const button = document.createElement("button");
-                button.textContent = "Show Word";
-                button.onclick = () => showWord(player, button);
-                li.appendChild(button);
-
+                li.textContent = player;
                 playerListElement.appendChild(li);
             });
         }
 
-        function assignRoles() {
+        function startGame() {
             if (players.length < 2) {
                 alert("You need at least 2 players to start the game.");
                 return;
             }
 
+            // Randomly select a word for the game
+            const randomIndex = Math.floor(Math.random() * words.length);
+            commonWord = words[randomIndex];
+
             // Randomly select Mister White
-            misterWhiteIndex = Math.floor(Math.random() * players.length);
+            const misterWhiteIndex = Math.floor(Math.random() * players.length);
+            misterWhite = players[misterWhiteIndex];
 
-            // Assign unique words to the rest of the players
-            players.forEach((player, index) => {
-                if (index !== misterWhiteIndex) {
-                    const randomIndex = Math.floor(Math.random() * availableWords.length);
-                    playerWords[player] = availableWords.splice(randomIndex, 1)[0]; // Assign and remove the word
-                }
+            alert("The game has started! Players can view their words one by one.");
+            updatePlayerListWithButtons();
+        }
+
+        function updatePlayerListWithButtons() {
+            const playerListElement = document.getElementById("player-list");
+            playerListElement.innerHTML = "";
+            players.forEach(player => {
+                const li = document.createElement("li");
+                li.textContent = player;
+
+                const buttonShowWord = document.createElement("button");
+                buttonShowWord.textContent = "Show Word";
+                buttonShowWord.onclick = () => showWord(player, buttonShowWord);
+                li.appendChild(buttonShowWord);
+
+                const buttonCheckRole = document.createElement("button");
+                buttonCheckRole.textContent = "Check Role";
+                buttonCheckRole.onclick = () => checkRole(player);
+                li.appendChild(buttonCheckRole);
+
+                playerListElement.appendChild(li);
             });
-
-            alert("Roles have been assigned. Players can now view their words one by one.");
         }
 
         function showWord(player, button) {
-            if (players.indexOf(player) === misterWhiteIndex) {
+            if (player === misterWhite) {
                 alert(`${player}, you are Mister White and do not have a word.`);
             } else {
-                const word = playerWords[player];
-                alert(`${player}, your word is: ${word.hindi} (${word.english})`);
+                alert(`${player}, your word is: ${commonWord.hindi} (${commonWord.french})`);
             }
 
             // Disable the button after the word is shown
             button.disabled = true;
             button.textContent = "Word Shown";
+        }
+
+        function checkRole(player) {
+            if (player === misterWhite) {
+                alert(`${player} is Mister White.`);
+            } else {
+                alert(`${player} is NOT Mister White.`);
+            }
         }
     </script>
 </body>
